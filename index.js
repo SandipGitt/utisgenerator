@@ -17,11 +17,22 @@ app.set("views", "./views");
 // serving the static files
 app.use(express.static("public"));
 
+// Trying to test the application level error handling
+app.get("/broken", (req, res, next) => {
+    throw new Error ("Broken")
+});
+
 app.use("/", indexRouter);
 // app.use((req, res, next)) => {
 //     console.log("Request Received at " +Date.now());
 //     next();
 // });
+
+// Application level error handler
+app.use((err, req, res, next)  => {
+    console.log(err);
+    res.status(500).send("Something Went Wrong");
+});
 
 app.listen(8000, () => {
     console.log("Server runnimg on port 8000");
