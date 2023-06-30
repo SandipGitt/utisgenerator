@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const ejs = require("ejs");
+const bodyParser = require("body-parser");
 
 const app = express();
 
@@ -9,6 +10,12 @@ const indexRouter = require("./routes");
 //  Setting up third party middlewares
 app.use(morgan("short"));
 app.use(cors());
+
+// Json data capture
+app.use(bodyParser.json());
+
+// Form data capture
+app.use(bodyParser.urlencoded({extended: true}));
 
 // Setting up the EJS Templating
 app.set("view engine", "ejs");

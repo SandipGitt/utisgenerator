@@ -13,6 +13,21 @@ router.get("/about", (req, res) => {
     res.render("about");
 });
 
+router.get("/service", (req, res) => {
+    res.render("service");
+});
+router.get("/feature", (req, res) => {
+    res.render("feature");
+});
+router.get("/price", (req, res) => {
+    res.render("price");
+});
+router.get("/quote", (req, res) => {
+    res.render("quote");
+});
+router.get("/team", (req, res) => {
+    res.render("team");
+});
 router.get("/converter/:currency1/:currency2/:value", async(req, res) => {
     const {currency1, currency2, value } = req.params;
 let currencyConverter =new CC ({
